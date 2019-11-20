@@ -8,7 +8,6 @@ const condNextStep_ = cond =>
     );
 
 const callKryptonopolis = R.pipe(
-    R.tap(console.log),
     R.dissoc('to'),
     fakeSendToKryptonopolis
 );
@@ -17,3 +16,5 @@ const processKryptonopolis = R.cond([
     [condNextStep_('train'), callKryptonopolis],
     [R.T, krypto => log('warn', `Krypto train not handled ${krypto}`)]
 ]);
+
+module.exports = {processKryptonopolis};
